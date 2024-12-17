@@ -1,9 +1,9 @@
 import { Global, Module } from '@nestjs/common';
-import { ValidationService } from './validation.service';
+import { TensorflowService } from './tensorflow.service';
 
 @Global()
 @Module({
-  providers: [ValidationService],
-  exports: [ValidationService],
+  providers: [TensorflowService],
+  exports: [TensorflowService],
 })
 export class CommonModule {}
