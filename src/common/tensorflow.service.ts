@@ -1,7 +1,6 @@
-import { Global, Injectable, OnApplicationBootstrap } from '@nestjs/common';
+import { Injectable, OnApplicationBootstrap } from '@nestjs/common';
 import * as tfjs from '@tensorflow/tfjs-node';
 
-@Global()
 @Injectable()
 export class TensorflowService implements OnApplicationBootstrap {
   private model: tfjs.GraphModel;
