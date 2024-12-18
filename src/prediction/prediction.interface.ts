@@ -2,7 +2,12 @@ interface PredictionData {
   id: string;
   result: string;
   suggestion: string;
-  createdAt: Date;
+  createdAt: string;
 }
 
-export default PredictionData;
+interface Prediction {
+  id: string;
+  history: PredictionData;
+}
+
+export { PredictionData, Prediction };

@@ -1,6 +1,7 @@
 import {
   BadRequestException,
   Controller,
+  Get,
   Post,
   UploadedFile,
   UseInterceptors,
@@ -8,7 +9,7 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 import { TensorflowService } from 'src/common/tensorflow.service';
 import { v4 as uuidv4 } from 'uuid';
-import PredictionData from './prediction.interface';
+import { PredictionData, Prediction } from './prediction.interface';
 import { PredictionService } from './prediction.service';
 
 @Controller('predict')
@@ -42,11 +43,16 @@ export class PredictionController {
       id,
       result,
       suggestion,
-      createdAt: new Date(),
+      createdAt: new Date().toISOString(),
     };
 
     await this.predictionService.create(saveData);
 
     return saveData;
+  }
+
+  @Get('histories')
+  async getAll(): Promise<Prediction[]> {
+    return this.predictionService.getAll();
   }
 }
